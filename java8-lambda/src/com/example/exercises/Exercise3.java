@@ -13,17 +13,18 @@ import com.example.service.MovieService;
 public class Exercise3 {
 
 	public static void main(String[] args) {
+		// Ex3. find the number movies of each director
+		MovieService movieService = InMemoryMovieService.getInstance();
 		
-		// find the total number of movies of each director
-		MovieService service = InMemoryMovieService.getInstance();
-		Collection<Movie> movies = service.findAllMovies();
+		Collection<Movie> movies = movieService.findAllMovies();
 		
-		Map<String, Long> directorMovieCounts =  movies.stream()
-		.map(Movie::getDirectors)
-		.flatMap(List::stream)
-		.collect(Collectors.groupingBy(Director::getName, Collectors.counting()));
-		
+		Map<String, Long> directorMovieCounts = movies.stream()
+			.map(Movie::getDirectors)
+			.flatMap(List::stream)
+			.collect(Collectors.groupingBy(Director::getName, Collectors.counting()));
+
 		directorMovieCounts.entrySet().forEach(System.out::println);
+		
 	}
 
 }

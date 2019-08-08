@@ -2,9 +2,12 @@ package com.example.banking.domain;
 
 import java.lang.*;
 
-public class Account {
+public class Account extends Object {
 	private String iban;
-	private double balance;
+	protected double balance;
+	private AccountStatus status = AccountStatus.ACTIVE;
+
+	private static long numOfAccounts;
 
 	// shortcuts
 	// Alt+Shift+S: show quick source menu
@@ -17,14 +20,27 @@ public class Account {
 	public Account(String iban, double balance) {
 		this.iban = iban;
 		this.balance = balance;
+		numOfAccounts++;
 	}
 
+	public AccountStatus getStatus() {
+		return status;
+	}
+	
+	public void setStatus(AccountStatus status) {
+		this.status = status;
+	}
+	
 	public String getIban() {
 		return iban;
 	}
 
 	public double getBalance() {
 		return balance;
+	}
+	
+	public static long getNumOfAccounts() {
+		return numOfAccounts;
 	}
 
 	@Override
@@ -33,6 +49,7 @@ public class Account {
 	}
 
 	public boolean withdraw(double amount) {
+		System.out.println("Account::withdraw");
 		// validation
 		if(amount <= 0)
 			return false;
