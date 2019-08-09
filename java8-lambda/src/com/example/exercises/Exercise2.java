@@ -15,6 +15,7 @@ import com.example.domain.City;
 
 public class Exercise2 {
 
+	@SuppressWarnings("unused")
 	public static void main(String[] args) {
 		// Ex2. Find the most populated city of each continent:
 		CountryDao countryDao = InMemoryWorldDao.getInstance();

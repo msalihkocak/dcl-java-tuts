@@ -1,13 +1,16 @@
 package com.example.banking.app;
 
+import java.io.IOException;
+
 import com.example.banking.domain.Account;
 import com.example.banking.domain.Bank;
 import com.example.banking.domain.Customer;
 import com.example.banking.domain.TransferService;
+import com.example.banking.exception.InsufficientBalanceException;
 
 public class StudyLooseCoupling {
 
-	public static void main(String[] args) {
+	public static void main(String[] args) throws InsufficientBalanceException, IOException {
 		
 		Bank garanti = new Bank(1, "Garanti");
 

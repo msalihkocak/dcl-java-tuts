@@ -4,6 +4,7 @@ import java.util.Optional;
 
 public class StudyNullAcces {
 
+	@SuppressWarnings("static-access")
 	public static void main(String[] args) {
 		Optional<B> b = Optional.empty();
 

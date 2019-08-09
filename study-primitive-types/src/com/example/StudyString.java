@@ -1,7 +1,5 @@
 package com.example;
 
-import javax.swing.plaf.synth.SynthSeparatorUI;
-
 public class StudyString {
 
 	public static void main(String[] args) {

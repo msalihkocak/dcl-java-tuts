@@ -1,5 +1,7 @@
 package com.example.banking.domain;
 
+import com.example.banking.exception.InsufficientBalanceException;
+
 public class CheckingAccount extends Account {
 	private double overDraftAmount;
 
@@ -14,17 +16,16 @@ public class CheckingAccount extends Account {
 	}
 
 	@Override
-	public boolean withdraw(double amount) {
+	public void withdraw(double amount) throws InsufficientBalanceException {
 		System.out.println("CheckingAccount::withdraw");
 		if(amount <= 0)
-			return false;
+			throw new IllegalArgumentException("Amount must be positive");
 		
 		if(amount > (balance +overDraftAmount))
-			return false;
+			throw new InsufficientBalanceException("Insufficient Fund", amount - balance - overDraftAmount);
 		
 		balance -= amount;
 		
-		return true;		
 	}
 	
 	

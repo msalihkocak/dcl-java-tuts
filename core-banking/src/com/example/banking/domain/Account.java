@@ -1,6 +1,6 @@
 package com.example.banking.domain;
 
-import java.lang.*;
+import com.example.banking.exception.InsufficientBalanceException;
 
 public class Account extends Object {
 	private String iban;
@@ -26,11 +26,11 @@ public class Account extends Object {
 	public AccountStatus getStatus() {
 		return status;
 	}
-	
+
 	public void setStatus(AccountStatus status) {
 		this.status = status;
 	}
-	
+
 	public String getIban() {
 		return iban;
 	}
@@ -38,7 +38,7 @@ public class Account extends Object {
 	public double getBalance() {
 		return balance;
 	}
-	
+
 	public static long getNumOfAccounts() {
 		return numOfAccounts;
 	}
@@ -48,27 +48,23 @@ public class Account extends Object {
 		return "Account [iban=" + iban + ", balance=" + balance + "]";
 	}
 
-	public boolean withdraw(double amount) {
+	public void withdraw(double amount) throws InsufficientBalanceException {
 		System.out.println("Account::withdraw");
 		// validation
-		if(amount <= 0)
-			return false;
-		
-		if(amount> balance)
-			return false;
-		
+		if (amount <= 0)
+			throw new IllegalArgumentException("Amount must be positive");
+		// business rule
+		if (amount > balance)
+			throw new InsufficientBalanceException("Insufficient Fund", amount - balance);
+
 		this.balance -= amount;
-		
-		return true;
 	}
-	
-	public boolean deposit(double amount) {
+
+	public void deposit(double amount) {
 		// validation
 		if (amount <= 0)
-			return false;
+			throw new IllegalArgumentException("Amount must be positive");
 		this.balance += amount;
-		return true;
 	}
-	
-	
+
 }

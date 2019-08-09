@@ -15,6 +15,7 @@ public class StudyArrays {
 		}
 	}
 
+	@SuppressWarnings("unused")
 	public static void main(String[] args) {
 
 		int[] arr;

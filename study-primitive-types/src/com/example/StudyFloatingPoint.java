@@ -4,6 +4,7 @@ import java.math.BigDecimal;
 
 public class StudyFloatingPoint {
 
+	@SuppressWarnings("unused")
 	public static void main(String[] args) {
 		float pi = 3.14151517f; // 4 - byte
 		double pi2 = 3.1415151D; // 8 - byte

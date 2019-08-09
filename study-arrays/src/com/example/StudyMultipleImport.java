@@ -4,6 +4,7 @@ import com.example.pkga.E;
 
 public class StudyMultipleImport {
 
+	@SuppressWarnings("unused")
 	public static void main(String[] args) {
 		E e1 = new E();
 		

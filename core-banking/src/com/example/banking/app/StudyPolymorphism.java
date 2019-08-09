@@ -4,10 +4,11 @@ import java.util.Random;
 
 import com.example.banking.domain.Account;
 import com.example.banking.domain.CheckingAccount;
+import com.example.banking.exception.InsufficientBalanceException;
 
 public class StudyPolymorphism {
 
-	public static void main(String[] args) {
+	public static void main(String[] args) throws InsufficientBalanceException {
 		
 		Account acc;
 		
